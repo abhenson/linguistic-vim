@@ -1,15 +1,11 @@
 if has('python')
     command! -nargs=1 Python python <args>
-    " elseif has('python3')
-    "     command! -nargs=1 Python python3 <args>
+elseif has('python3')
+    command! -nargs=1 Python python3 <args>
 else
     echo "Error: Vim compiled with +python or +python3 required"
     finish
 endif
-" if !has('python3')
-" 	echo "Error: This version of vim isn't compiled with python support"
-" 	finish
-" endif
 
 function! TTF()
 
