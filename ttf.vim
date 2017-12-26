@@ -14,11 +14,14 @@ Python << EOF
 import vim # import to be able to interact with vim(see :help python-vim)
 
 buffer = vim.current.buffer[:]
-text = [line.strip() for line in buffer]
+text = [word.strip('(),.:;?!') for line in buffer for word in line.split()]
 
 total = len(text)
 unique = len(set(text))
-ttf = round(float(total) / unique, 3)
+# debug code
+# print('total tokens is {}, unique tokens is {}'.format(total, unique))
+# print(text)
+ttf = round(float(unique) / total, 3)
 print('TTF for current buffer is {}'.format(ttf))
 
 EOF
